@@ -1,6 +1,7 @@
 package edu.kosta.network;
 
 import java.io.*;
+import java.lang.reflect.Field;
 
 /**
  * Created by sejun on 17. 2. 20.
@@ -64,7 +65,22 @@ public class IOTest {
 
         System.out.println(endTime-startTime +"ms ....");
 
-        FileInputStream fis2 = new FileInputStream(file);
 
+        FileInputStream fis2 = new FileInputStream(file);
+        BufferedInputStream bis2 = new BufferedInputStream(fis2);
+        long startTime2 = System.currentTimeMillis();
+        byte[] buf = new byte[3];
+        int readByte = 0;
+        if((readByte = fis2.read(buf)) != -1){
+            System.out.print(new String(buf));
+        }
+        long endTime2 = System.currentTimeMillis();
+
+        System.out.println(endTime2-startTime2 +"ms ....");
+
+        /*
+        * BufferedOuputStream의 경우에는 마지막에 내용이 전부 차지 않으면 write를 하지 않으므로
+        * 반드시 flush를 이용해서 마지막 내용까지 write를 해줘야 함.
+        * */
     }
 }
