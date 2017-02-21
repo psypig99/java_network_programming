@@ -1,4 +1,4 @@
-package edu.kosta.network;
+package edu.kosta.network.io;
 
 import java.io.*;
 import java.lang.reflect.Field;
